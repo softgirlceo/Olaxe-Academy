@@ -19,7 +19,7 @@ const fraunces = Fraunces({
 export const metadata: Metadata = {
   title: 'Olaxe Academy — Learn. Scale. Lead.',
   description:
-    'The digital headquarters of Olaxe Academy. Structured, practical digital education in Media Buying, Digital Marketing, Artificial Intelligence and E-commerce — where information becomes implementation.',
+    'The digital headquarters of Olaxe Academy. Structured, practical digital education in Media Buying, Digital Marketing, Artificial Intelligence and Product Research — where information becomes implementation.',
   generator: 'v0.app',
   keywords: [
     'Olaxe Academy',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     'media buying',
     'digital marketing',
     'artificial intelligence',
-    'e-commerce',
+    'product research',
     'practical learning',
   ],
   openGraph: {

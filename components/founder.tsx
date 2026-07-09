@@ -50,7 +50,7 @@ export function Founder() {
                 Maryam Olayinka
               </h2>
               <p className="mt-3 text-base text-gold/80">
-                Founder, Digital Strategist &amp; AI Educator
+                Founder • Media Buyer • Digital Strategist &amp; AI Educator
               </p>
             </Reveal>
 

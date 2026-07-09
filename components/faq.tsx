@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { Plus } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { Reveal } from './reveal'
 
 const FAQS = [
@@ -73,13 +73,13 @@ export function Faq() {
                       {item.q}
                     </span>
                     <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border transition-all duration-500 ${
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-500 ${
                         isOpen
-                          ? 'rotate-45 border-gold/60 text-gold'
-                          : 'text-muted-foreground group-hover:border-gold/40 group-hover:text-gold'
+                          ? 'rotate-180 border-gold/60 text-gold'
+                          : 'border-border text-muted-foreground group-hover:border-gold/40 group-hover:text-gold'
                       }`}
                     >
-                      <Plus className="h-4 w-4" strokeWidth={1.5} />
+                      <ChevronDown className="h-4 w-4" strokeWidth={1.5} />
                     </span>
                   </button>
                   <AnimatePresence initial={false}>
