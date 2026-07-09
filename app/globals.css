@@ -1,0 +1,158 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand tokens */
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-deep: var(--gold-deep);
+  --color-ink: var(--ink);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 14px);
+  --radius-3xl: calc(var(--radius) + 26px);
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Deep matte black universe */
+  --ink: oklch(0.06 0.004 260);
+  --background: oklch(0.06 0.004 260);
+  --foreground: oklch(0.95 0.006 90);
+
+  /* Bright metallic gold family */
+  --gold: oklch(0.82 0.13 88);
+  --gold-soft: oklch(0.88 0.09 90);
+  --gold-deep: oklch(0.68 0.12 74);
+
+  --card: oklch(0.09 0.005 260);
+  --card-foreground: oklch(0.95 0.006 90);
+  --popover: oklch(0.08 0.005 260);
+  --popover-foreground: oklch(0.95 0.006 90);
+
+  --primary: oklch(0.82 0.13 88);
+  --primary-foreground: oklch(0.08 0.005 260);
+  --secondary: oklch(0.14 0.005 260);
+  --secondary-foreground: oklch(0.95 0.006 90);
+  --muted: oklch(0.14 0.005 260);
+  --muted-foreground: oklch(0.68 0.008 90);
+  --accent: oklch(0.16 0.01 88);
+  --accent-foreground: oklch(0.95 0.006 90);
+  --destructive: oklch(0.6 0.14 30);
+
+  --border: oklch(0.28 0.02 88 / 0.22);
+  --input: oklch(0.3 0.02 88 / 0.28);
+  --ring: oklch(0.82 0.13 88 / 0.55);
+
+  --radius: 0.9rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: oklch(0.82 0.13 88 / 0.24);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(
+      100deg,
+      oklch(0.7 0.11 70) 0%,
+      oklch(0.92 0.1 92) 42%,
+      oklch(0.82 0.13 88) 70%,
+      oklch(0.66 0.11 68) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: color-mix(in oklch, var(--ink) 55%, transparent);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border-bottom: 1px solid color-mix(in oklch, var(--gold) 14%, transparent);
+  }
+
+  .gold-hairline {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklch, var(--gold) 55%, transparent),
+      transparent
+    );
+  }
+
+  /* Wrapping text sensibly */
+  .balance {
+    text-wrap: balance;
+  }
+  .pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* Reveal-on-scroll primitive (progressive enhancement) */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
